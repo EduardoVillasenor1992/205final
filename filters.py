@@ -32,15 +32,15 @@ def index():
     value3 = random.randint(1,10)
 
     print("its done")
-    return render_template("index.html", v1 = value1, v2 = value2, v3 = value3)
+    return render_template("index.html")
 
 
 
 @app.route('/newpage1')
 def template_func():
 
-    photoId = value1
-    index = value1 - 1
-    title = image_info[index]["title"]
-    author = image_info[index]["flickr_user"]
-    return render_template("newpage1.html", a1 = photoId, a2 = title, a3 = author)
+    # photoId = value1
+    # index = value1 - 1
+    # title = image_info[index]["title"]
+    # author = image_info[index]["flickr_user"]
+    return render_template("newpage1.html")
