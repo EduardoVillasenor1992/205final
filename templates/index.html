@@ -14,87 +14,56 @@
   .container{
   margin-top:20px;
 }
-.image-preview-input {
+.upload-file{
+  height: 100px;
+  width: 300px;
+  margin: -20px -50px;
+  top:50%;
+  left: 46%;
   position: relative;
-  overflow: hidden;
-  margin: 0px;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
 }
-.image-preview-input input[type=file] {
-position: absolute;
-top: 0;
-right: 0;
-margin: 0;
-padding: 0;
-font-size: 20px;
-cursor: pointer;
-opacity: 0;
-filter: alpha(opacity=0);
+.dropdown-menu{
+  background-color: red;
+
 }
-.image-preview-input-title {
-  margin-left:2px;
+.body-div{
+  background-color: #2347ce
 }
   </style>
 
 
 </head>
-<body>
+<body class = "body-div">
 
 <!-- # the section below is the jumbotron fron page, the buttons are not functional for the filters
 ############################################################################################################################################## -->
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-center" style = "color: black; background-color: powderblue;">
     <h1>Photo Filter</h1>
     <p>Filter photos using our web</p>
     <div class="btn-group">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button style = "color: #126961;"type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Filters
 <!-- #############################################################################################################################################
 # buttons are not functional, they only display a dropdown menu -->
       </button>
-      <div class="dropdown-menu dropdown-menu-right">
+      <div class="dropdown-menu">
         <button class="dropdown-item" type="button">Action</button>
         <button class="dropdown-item" type="button">Another action</button>
         <button class="dropdown-item" type="button">Something else here</button>
       </div>
     </div>
   </div>
-<!-- ###############################################################################################################################################
+<!-- ###############################################################################################################################################-->
 
-
-###############################################################################################################################################
-# the code below is the browse for image input, needs javascript as well -->
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <!-- image-preview-filename input [CUT FROM HERE]-->
-            <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
-                    </div>
-                </span>
-            </div><!-- /input-group image-preview [TO HERE]-->
-        </div>
-    </div>
+<div class = "upload-file">
+    <h1 style = "color: red">Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+    <p><input style = "color: black" type=file name=file></input></p>
+    <input style = "color: red" type=submit value=Upload></input>
+    </form>
 </div>
 
-<h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-
-<a href="http://127.0.0.1:5000/newpage1">page 2</a>
+<!--   <a href="http://127.0.0.1:5000/newpage1">page 2</a>  -->
 
 
 </body>

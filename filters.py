@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+import os.path
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import random
@@ -11,17 +12,8 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-odds = range(1,60,2)
-
-value1 = 0
-value2 = 0
-value3 = 0
-
-
-photoId = 0
-title = ""
-author = ""
-
+title = [os.listdir("static/Uploads")]
+print(title)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -50,7 +42,7 @@ def index():
 
     else:
         print("its done")
-        return render_template("index.html")
+        return render_template("index.html", titles = title)
 
 
 
