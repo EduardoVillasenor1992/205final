@@ -1,4 +1,6 @@
 from datetime import datetime
+from PIL import Image
+import glob
 import os
 import os.path
 from flask import Flask, render_template, request, redirect, url_for
@@ -7,20 +9,18 @@ import random
 UPLOAD_FOLDER = 'static/Uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-
+image_list = []
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 title = [os.listdir("static/Uploads")]
 print(title)
+print(title[0][0])
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-
 
 @app.route('/', methods = ['GET','POST'])
 def index():
@@ -42,14 +42,14 @@ def index():
 
     else:
         print("its done")
-        return render_template("index.html", titles = title)
+        return render_template("index.html")
 
 
 
 @app.route('/newpage1')
 def template_func():
 
-    return render_template("newpage1.html", )
+    return render_template("newpage1.html", titles = title)
 
 
 
