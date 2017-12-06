@@ -12,23 +12,24 @@
 
   <style>
   .container{
-  margin-top:20px;
-}
-.upload-file{
-  height: 100px;
-  width: 300px;
-  margin: -20px -50px;
-  top:50%;
-  left: 46%;
-  position: relative;
-}
-.dropdown-menu{
-  background-color: red;
+    margin-top:20px;
+  }
+  .upload-file{
+    height: 100px;
+    width: 300px;
+    margin: -20px -50px;
+    top:50%;
+    left: 46%;
+    position: relative;
+  }
+  .dropdown-menu{
+    background-color: #cbe5ed;
+    padding: 20px;
 
-}
-.body-div{
-  background-color: #2347ce
-}
+  }
+  .body-div{
+    background-color: #2347ce
+  }
   </style>
 
 
@@ -47,9 +48,12 @@
 # buttons are not functional, they only display a dropdown menu -->
       </button>
       <div class="dropdown-menu">
-        <button class="dropdown-item" type="button">Action</button>
-        <button class="dropdown-item" type="button">Another action</button>
-        <button class="dropdown-item" type="button">Something else here</button>
+        <button id = "negative" method=post class="dropdown-item" type="button">Negative</button>
+        <button id = "warm" method=post class="dropdown-item" type="button">Warm</button>
+        <button id = "grey" method=post class="dropdown-item" type="button">Grey</button>
+        <button id = "sepia" method=post class="dropdown-item" type="button">Sepia</button>
+        <button id = "cooling" method=post class="dropdown-item" type="button">Cooling</button>
+
       </div>
     </div>
   </div>
