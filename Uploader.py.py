@@ -1,3 +1,11 @@
+###################################
+# Course: CST 205
+# Title: Photo Uploader
+# Authors: Ishtar Perez(filter basic layout, @routes(), github setup), Ben Lenz(file upload system, image displaying,), Edward Villasenor(HTML layout, script for filter display, general layout, github setup)
+# Date: 12/09/2017
+# GITHUB link: https://github.com/EduardoVillasenor1992/205final
+# Description: Allows the user to upload an image file of their choice, and displays it in a block format. There are also seperate links between the homepage and gallery page to navigate
+################################
 from datetime import datetime
 from PIL import Image
 import glob
@@ -14,48 +22,45 @@ image_list = []
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-title = [os.listdir("static/Uploads")]
-print(title)
-print(title[0][0])
 
+#checks file to see if it is an image extension, checking the formats with the list above ALLOWED_EXTENSIONS
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/', methods = ['GET','POST'])
 def index():
+    ## if the upload button is pressed, get the filename, check if it is an imaage and then save it to the uploads folder, and add the name to the list of pictures to be displayed on the next page
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            flash('No file part')
+            #flash('No file part')
             return redirect(request.url)
         file = request.files['file']
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
-            flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print(filename)
-            return render_template("newpage1.html")
+            title = [os.listdir("static/Uploads")]
+            return render_template("newpage1.html", titles = title)
 
     else:
-        print("its done")
         return render_template("index.html")
 
 
-
+#newpage1 = image gallery page, input is a list of the images in upload folder
 @app.route('/newpage1')
 def template_func():
-
+    title = [os.listdir("static/Uploads")]
     return render_template("newpage1.html", titles = title)
 
 
 
 ################################################################################
-# filters for image
+# filters for image, they currently do not work,
 
 def coolingFilter(cooling_filter):
     filter1 = []
