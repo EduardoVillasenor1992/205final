@@ -45,7 +45,7 @@ def index():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             title = [os.listdir("static/Uploads")]
-            return render_template("newpage1.html", titles = title)
+            return render_template("Gallery.html", titles = title)
 
     else:
         return render_template("index.html")
@@ -55,7 +55,7 @@ def index():
 @app.route('/newpage1')
 def template_func():
     title = [os.listdir("static/Uploads")]
-    return render_template("newpage1.html", titles = title)
+    return render_template("Gallery.html", titles = title)
 
 
 
